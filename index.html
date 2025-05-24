@@ -1,53 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
+  <meta charset="UTF-8">
+  <title>8ORUZ7</title>
+  <link rel="icon" type="image/x-icon" href="https://art.pixilart.com/a677d26abe7e820.gif">
   <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
     body {
-      background-color: #121212;
-      color: #e0e0e0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      background-color: #1e1e1e;
+      color: white;
+      scroll-behavior: smooth;
     }
-
     .container {
-      background-color: #1f1f1f;
-      padding: 3rem 4rem;
-      border-radius: 16px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      display: flex;
+    }
+    .sidebar {
+      margin-top: 60px;
+      margin-bottom: 60px;
+      width: 250px;
+      background-color: #111;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
+    .sidebar img {
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      margin-top: 30px;
+    }
+    .sidebar h2 {
+      font-size: 30px;
+      margin: 0 0 20px;
+    }
+    .sidebar a {
+      color: white;
+      text-decoration: underline;
+      margin: 5px 0;
+      font-size: 20px;
+    }
+    .content {
+      flex-grow: 1;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+    .section {
+      height: 100vh;
+      padding: 20px;
+      background-color: #252525;
+      border-radius: 30px;
+      margin: 20px;
+      position: relative;
+      transition: opacity 0.3s ease;
+    }
+    .intro h1 {
+      font-size: 80px;
+      margin-bottom: 10px;
+      margin-left: 100px;
+    }
+    .intro p {
+      font-size: 20px;
+      color: #ccc;
+      max-width: 900px;
+      white-space: pre-line;
+      min-height: 150px;
+      margin-left: 100px;
+    }
+    .projects h1 {
+      font-size: 42px;
+    }
+    .project-list {
+      margin-top: 30px;
+    }
+    .project-list div {
+      background-color: #000;
+      padding: 15px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+    .project-list div::before {
+      content: "≡";
+      margin-right: 10px;
+    }
+    .coming-soon {
       text-align: center;
-      max-width: 500px;
+      margin-top: 40px;
+      font-size: 20px;
+      color: #666;
+      font-weight: bold;
+    }
+    .close-btn {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      background-color: #000;
+      border: none;
+      color: white;
+      font-size: 24px;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+    .typing-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 20px;
+      background-color: #ccc;
+      animation: blink 0.7s infinite;
+      vertical-align: bottom;
+    }
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      color: #ffffff;
+    #projects {
+      opacity: 0.1;
     }
 
-    p.subtitle {
-      font-size: 1.2rem;
-      color: #9e9e9e;
-      letter-spacing: 1px;
+    .dropdown {
+      background-color: #000;
+      border-radius: 15px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: 0.3s ease;
+      cursor: pointer;
     }
+
+    .dropdown-header {
+      padding: 15px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .dropdown-header::before {
+      content: "≡";
+      margin-right: 10px;
+    }
+
+    .dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      background-color: #1a1a1a;
+      padding-left: 25px;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .dropdown-content p {
+      margin: 10px 0;
+      font-size: 16px;
+      color: #ccc;
+    }
+
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Alexandra</h1>
-    <p class="subtitle">Software Engineer</p>
+
+<div class="container">
+  <div class="sidebar">
+    <img src="https://avatars.githubusercontent.com/u/170834894?v=4" alt="Alexandra">
+    <h2>8ORUZ7</h2>
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
   </div>
+
+  <div class="content">
+    <div id="home" class="section intro">
+      <button class="close-btn">&times;</button>
+      <h1>Hello,<br>I’m Alexandra</h1>
+      <p id="typing"></p>
+    </div>
+
+    <div id="projects" class="section projects">
+      <button class="close-btn">&times;</button>
+      <h1>Projects</h1>
+          <div class="dropdown">
+            <div class="dropdown-header">Web Development</div>
+            <div class="dropdown-content">
+              <p>Netflix Clone</p>
+              <p>Hotel Booking System</p>
+            </div>
+            </div>
+
+
+          <div class="dropdown">
+            <div class="dropdown-header">Cybersecurity</div>
+            <div class="dropdown-content">
+              <p>Red Teaming VCVI Tool</p>
+              <p>TryHackMe Labs</p>
+              <p>Password Manager Project</p>
+            </div>
+            </div>
+
+          <div class="dropdown">
+            <div class="dropdown-header">Blockchain Development</div>
+            <div class="dropdown-content">
+              <p>Smart Contracts</p>
+              <p>Token Deployment</p>
+              <p>DApp Prototype</p>
+            </div>
+            </div>
+
+          <div class="dropdown">
+            <div class="dropdown-header">Software Application</div>
+            <div class="dropdown-content">
+              <p>Java GUI App</p>
+              <p>Lost & Found System</p>
+              <p>Encryption Tool</p>
+            </div>
+          </div>
+      </div>
+      <div class="coming-soon">Coming Soon!</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Typing animation
+  const text = `I'm a beginner software engineer who loves experimenting with new ideas,
+even if I have no clue where to start. I'm here to learn, break things, and grow.`;
+  const target = document.getElementById('typing');
+  let index = 0;
+
+  function typeLoop() {
+    if (index < text.length) {
+      target.innerHTML = text.substring(0, index + 1) + '<span class="typing-cursor"></span>';
+      index++;
+      setTimeout(typeLoop, 30);
+    } else {
+      setTimeout(() => {
+        index = 0;
+        target.innerHTML = '';
+        setTimeout(typeLoop, 500);
+      }, 2000);
+    }
+  }
+
+  window.addEventListener('load', typeLoop);
+
+  // Fade-in effect on scroll
+  const projectsSection = document.getElementById('projects');
+  window.addEventListener('scroll', () => {
+    const rect = projectsSection.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const visible = Math.max(0, windowHeight - rect.top);
+    const fadeFactor = Math.min(1, visible / windowHeight);
+    const minOpacity = 0.1;
+    const maxOpacity = 1;
+    projectsSection.style.opacity = (minOpacity + (maxOpacity - minOpacity) * fadeFactor).toFixed(2);
+  });
+
+  // Close buttons functionality (independent)
+  const closeButtons = document.querySelectorAll('.close-btn');
+  closeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const section = button.closest('.section');
+      if (section) section.style.display = 'none';
+    });
+  });
+
+  // Dropdown toggle logic
+const dropdowns = document.querySelectorAll('.dropdown');
+
+dropdowns.forEach(dropdown => {
+  const header = dropdown.querySelector('.dropdown-header');
+  const content = dropdown.querySelector('.dropdown-content');
+
+  header.addEventListener('click', () => {
+    const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+    content.style.maxHeight = isOpen ? '0px' : content.scrollHeight + 'px';
+  });
+});
+
+</script>
+
 </body>
 </html>
